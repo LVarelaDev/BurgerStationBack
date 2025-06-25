@@ -39,7 +39,7 @@ export class BurgersController {
   })
   async findOne(
     @Param('id') id: number,
-  ): Promise<{ burger: BurgerResponseDto; additionalsItem: AditionalsItem }> {
+  ): Promise<{ burger: BurgerResponseDto; additionalsItem: AditionalsItem[] }> {
     return await this.burgersService.getBurgerById(id);
   }
 }
