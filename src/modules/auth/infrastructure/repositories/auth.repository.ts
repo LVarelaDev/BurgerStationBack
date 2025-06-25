@@ -61,7 +61,6 @@ export class PrismaAuthRepository implements AuthRepository {
   }
 
   async validateUser(credentials: LoginRequestDto): Promise<User> {
-    console.log('credentials', credentials);
     const user = await this.prisma.user.findUnique({
       where: { email: credentials.email },
     });

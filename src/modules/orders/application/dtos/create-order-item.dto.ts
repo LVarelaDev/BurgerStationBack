@@ -32,7 +32,6 @@ export class CreateOrderItemDto {
     description: 'Precio base de la hamburguesa',
   })
   @IsNumber()
-  @IsPositive()
   price: number;
 
   @ApiProperty({

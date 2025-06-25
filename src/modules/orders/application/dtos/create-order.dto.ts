@@ -15,14 +15,6 @@ const validStatuses = ['PENDING', 'IN PROCESS', 'COMPLETED'];
 
 export class CreateOrderDto {
   @ApiProperty({
-    example: 1,
-    description: 'ID del usuario que realiza el pedido',
-  })
-  @IsNumber()
-  @IsPositive()
-  userId: number;
-
-  @ApiProperty({
     example: 25.5,
     description: 'Total del pedido',
   })

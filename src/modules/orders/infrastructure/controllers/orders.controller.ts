@@ -1,24 +1,23 @@
 import {
-  Controller,
-  Post,
   Body,
+  Controller,
+  Get,
+  HttpStatus,
+  Param,
+  Post,
   UsePipes,
   ValidationPipe,
-  Get,
-  Param,
-  HttpStatus,
-  Inject,
 } from '@nestjs/common';
 import {
-  ApiTags,
-  ApiOperation,
-  ApiResponse,
-  ApiBody,
-  ApiParam,
   ApiBearerAuth,
+  ApiBody,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
 } from '@nestjs/swagger';
-import { OrdersService } from '../../application/orders.service';
 import { CreateOrderDto } from '../../application/dtos/create-order.dto';
+import { OrdersService } from '../../application/orders.service';
 import { createOrderSchemaExample } from './examples/create-order.schema.example';
 
 @ApiTags('Orders')
@@ -47,7 +46,7 @@ export class OrdersController {
   })
   @UsePipes(new ValidationPipe())
   async create(@Body() createOrderDto: CreateOrderDto) {
-    return this.ordersService.createOrder(3, createOrderDto);
+    return this.ordersService.createOrder(2, createOrderDto);
   }
 
   @Get(':id')
@@ -71,7 +70,7 @@ export class OrdersController {
     description: 'Unauthorized',
   })
   async findOne(@Param('id') id: number) {
-    return this.ordersService.findById(3, id);
+    return this.ordersService.findById(2, id);
   }
 
   @Get()
@@ -89,6 +88,6 @@ export class OrdersController {
     description: 'Unauthorized',
   })
   async findAll() {
-    return this.ordersService.findAllOrder(3);
+    return this.ordersService.findAllOrder(2);
   }
 }

@@ -2,6 +2,7 @@ import { Controller, Get, HttpStatus, Param } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BurgersService } from '../../application/burgers.service';
 import { BurgerResponseDto } from '../../application/dtos/create-burger.dto';
+import { AditionalsItem } from '../../domain/repositories/burger.repository';
 
 @ApiTags('Burgers')
 @Controller('burgers')
@@ -36,7 +37,9 @@ export class BurgersController {
     status: HttpStatus.NOT_FOUND,
     description: 'Burger not found',
   })
-  async findOne(@Param('id') id: number): Promise<BurgerResponseDto> {
+  async findOne(
+    @Param('id') id: number,
+  ): Promise<{ burger: BurgerResponseDto; additionalsItem: AditionalsItem }> {
     return await this.burgersService.getBurgerById(id);
   }
 }

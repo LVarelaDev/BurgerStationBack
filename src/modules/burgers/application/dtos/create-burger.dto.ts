@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { AditionalsItem } from '../../domain/repositories/burger.repository';
 
 export class BurgerResponseDto {
   @ApiProperty({ example: 1 })

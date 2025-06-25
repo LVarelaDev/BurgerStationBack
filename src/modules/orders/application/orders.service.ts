@@ -29,7 +29,7 @@ export class OrdersService {
   }
 
   async findById(userid: number, id: number) {
-    return await this.orderRepository.findById(userid, id);
+    const order = await this.orderRepository.findById(userid, id);
   }
 
   async findAllOrder(userId: number) {

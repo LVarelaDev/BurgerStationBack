@@ -6,27 +6,20 @@ import { TokenService } from 'src/modules/auth/domain/interfaces/token-service.i
 export class AuthGuard implements CanActivate {
   constructor(private readonly tokenService: TokenService) {}
 
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
+  canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest();
     const authHeader = request.headers.authorization;
 
-    if (!authHeader) {
-      return false;
-    }
+    if (!authHeader) return false;
 
     const [bearer, token] = authHeader.split(' ');
-
-    if (bearer !== 'Bearer' || !token) {
-      return false;
-    }
+    if (bearer !== 'Bearer' || !token) return false;
 
     try {
       const payload = this.tokenService.verifyToken(token);
       request.user = payload;
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }

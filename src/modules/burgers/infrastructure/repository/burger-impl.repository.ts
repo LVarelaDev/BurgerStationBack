@@ -1,11 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { Burger } from '../../domain/entities/burger.entity';
-import { BurgerRepository } from '../../domain/repositories/burger.repository';
+import {
+  AditionalsItem,
+  BurgerRepository,
+} from '../../domain/repositories/burger.repository';
 import { PrismaService } from 'src/shared/database/prisma.service';
 
 @Injectable()
 export class BurgerRepositoryImpl implements BurgerRepository {
   constructor(private readonly prisma: PrismaService) {}
+
+  async findAllAdditionls(): Promise<AditionalsItem[]> {
+    const result = await this.prisma.customizationOption.findMany();
+    console.log('result', result);
+
+    return result;
+  }
 
   async create(data: {
     name: string;

@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsPositive, IsIn } from 'class-validator';
 
-const validCustomizationOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // IDs de las opciones válidas
-
 export class CreateOrderItemCustomizationDto {
   @ApiProperty({
     example: 1,
@@ -10,9 +8,6 @@ export class CreateOrderItemCustomizationDto {
   })
   @IsNumber()
   @IsPositive()
-  @IsIn(validCustomizationOptions, {
-    message: 'Opción de personalización no válida',
-  })
   customizationOptionId: number;
 
   @ApiProperty({
@@ -20,6 +15,5 @@ export class CreateOrderItemCustomizationDto {
     description: 'Precio del adicional',
   })
   @IsNumber()
-  @IsPositive()
   price: number;
 }
