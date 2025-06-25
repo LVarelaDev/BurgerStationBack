@@ -1,13 +1,13 @@
-import serverlessExpress from '@vendia/serverless-express';
-import { NestFactory } from '@nestjs/core';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import express, { Handler } from 'express';
-import { AppModule } from 'src/app.module';
+import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import { HttpExceptionFilter } from 'src/common/exceptions/http-exception.filter';
-import { ApiResponseInterceptor } from 'src/common/interceptors/api-response.interceptor';
-import { APIGatewayProxyHandler, Callback, Context } from 'aws-lambda';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import serverlessExpress from '@vendia/serverless-express';
+import { APIGatewayProxyHandler } from 'aws-lambda';
+import express from 'express';
+import { AppModule } from './src/app.module';
+import { HttpExceptionFilter } from './src/common/exceptions/http-exception.filter';
+import { ApiResponseInterceptor } from './src/common/interceptors/api-response.interceptor';
 
 let cachedServer: any;
 
