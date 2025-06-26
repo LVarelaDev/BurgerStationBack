@@ -30,6 +30,15 @@
 ```bash
 $ npm install
 ```
+## .env
+```bash
+PORT=3001
+DATABASE_URL="mysql://root:QahNIkJnHvAICGaZATeLYOaTKJfOgIxX@metro.proxy.rlwy.net:31472/railway?schema=public"
+JWT_SECRET
+JWT_EXPIRES_IN
+SENDGRID_FROM_EMAIL
+SENDGRID_API_KEY
+```
 
 ## Compile and run the project
 
@@ -73,6 +82,10 @@ If you are looking for a cloud-based platform to deploy your NestJS application,
 $ npm install -g @nestjs/mau
 $ mau deploy
 ```
+
+
+
+
 
 With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
